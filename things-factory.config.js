@@ -5,8 +5,8 @@ export default {
   route,
   routes: [
     {
-      tagname: 'warehouse-ui-main',
-      page: 'warehouse-ui-main'
+      tagname: 'warehouse-list',
+      page: 'warehouses'
     }
   ],
   bootstrap
