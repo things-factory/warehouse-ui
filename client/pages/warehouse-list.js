@@ -1,9 +1,17 @@
+import { getCodeByName } from '@things-factory/code-base'
 import '@things-factory/form-ui'
 import '@things-factory/grist-ui'
 import { i18next, localize } from '@things-factory/i18n-base'
 import { openImportPopUp } from '@things-factory/import-ui'
-import { getCodeByName } from '@things-factory/code-base'
-import { client, CustomAlert, gqlBuilder, isMobileDevice, PageView, ScrollbarStyles } from '@things-factory/shell'
+import {
+  client,
+  CustomAlert,
+  gqlBuilder,
+  isMobileDevice,
+  navigate,
+  PageView,
+  ScrollbarStyles
+} from '@things-factory/shell'
 import gql from 'graphql-tag'
 import { css, html } from 'lit-element'
 
@@ -74,7 +82,7 @@ class WarehouseList extends localize(i18next)(PageView) {
             columns: [...this.config.columns.filter(column => column.imex !== undefined)]
           }
           openImportPopUp(records, config, async patches => {
-            await this._saveVas(patches)
+            await this._saveWarehouse(patches)
             history.back()
           })
         }
@@ -114,6 +122,7 @@ class WarehouseList extends localize(i18next)(PageView) {
     ]
 
     this.config = {
+      list: { fields: ['name', 'description', 'type'] },
       rows: { selectable: { multiple: true } },
       columns: [
         { type: 'gutter', gutterName: 'dirty' },
@@ -270,10 +279,10 @@ class WarehouseList extends localize(i18next)(PageView) {
 
       const response = await client.query({
         query: gql`
-        mutation {
-          deleteWarehouses(${gqlBuilder.buildArgs({ names })})
-        }
-      `
+          mutation {
+            deleteWarehouses(${gqlBuilder.buildArgs({ ids })})
+          }
+        `
       })
 
       if (!response.errors) {

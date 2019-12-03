@@ -7,6 +7,10 @@ export default {
     {
       tagname: 'warehouse-list',
       page: 'warehouses'
+    },
+    {
+      tagname: 'location-list',
+      page: 'locations'
     }
   ],
   bootstrap

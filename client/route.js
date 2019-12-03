@@ -3,5 +3,9 @@ export default function route(page) {
     case 'warehouses':
       import('./pages/warehouse-list')
       return page
+
+    case 'locations':
+      import('./pages/location-list')
+      return page
   }
 }
