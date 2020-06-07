@@ -4,15 +4,9 @@ import '@things-factory/grist-ui'
 import { i18next, localize } from '@things-factory/i18n-base'
 import { openImportPopUp } from '@things-factory/import-ui'
 import { openPopup } from '@things-factory/layout-base'
-import {
-  client,
-  CustomAlert,
-  gqlBuilder,
-  isMobileDevice,
-  PageView,
-  ScrollbarStyles,
-  store
-} from '@things-factory/shell'
+import { client, CustomAlert, PageView, store } from '@things-factory/shell'
+import { gqlBuilder, isMobileDevice } from '@things-factory/utils'
+import { ScrollbarStyles } from '@things-factory/styles'
 import gql from 'graphql-tag'
 import { css, html } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin'
