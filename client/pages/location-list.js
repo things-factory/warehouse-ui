@@ -10,7 +10,7 @@ import { ScrollbarStyles } from '@things-factory/styles'
 import gql from 'graphql-tag'
 import { css, html } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin'
-import { LOCATION_LABEL_SETTING_KEY } from '../../setting-constants'
+import { LOCATION_LABEL_SETTING_KEY } from './constants'
 import './generate-location-list'
 
 class LocationList extends connect(store)(localize(i18next)(PageView)) {
